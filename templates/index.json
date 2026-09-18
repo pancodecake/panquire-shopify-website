@@ -3,8 +3,12 @@
     "hero": {
       "type": "pq-hero",
       "settings": {
-        "label": "Featured collections",
-        "aspect_ratio": 2.2
+        "label": "Featured collection",
+        "desktop_height": 680,
+        "mobile_height": 620,
+        "overlay_opacity": 70,
+        "image_position": 50,
+        "content_width": 520
       },
       "blocks": {
         "item1": {
@@ -15,36 +19,14 @@
             "text": "Great ride, doesn't have to come at a great cost..",
             "button": "Explore products",
             "link": "/pages/products",
-            "text_color": "#f0f0f2"
-          }
-        },
-        "item2": {
-          "type": "slide",
-          "settings": {
-            "kicker": "The Panquire collection",
-            "heading": "Make every ride yours.",
-            "text": "New possibilities. Every day.",
-            "button": "Explore products",
-            "link": "/pages/products",
-            "text_color": "#f0f0f2"
-          }
-        },
-        "item3": {
-          "type": "slide",
-          "settings": {
-            "kicker": "Meet Panquire",
-            "heading": "A new direction.",
-            "text": "Discover the story behind the ride.",
-            "button": "About Us",
-            "link": "/pages/about",
+            "secondary_button": "Our story",
+            "secondary_link": "/pages/about",
             "text_color": "#f0f0f2"
           }
         }
       },
       "block_order": [
-        "item1",
-        "item2",
-        "item3"
+        "item1"
       ]
     },
     "benefits": {
