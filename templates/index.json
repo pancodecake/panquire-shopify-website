@@ -11,8 +11,8 @@
           "type": "slide",
           "settings": {
             "kicker": "Introducing Panquire",
-            "heading": "Go small. Ride big.",
-            "text": "Find your next adventure.",
+            "heading": "Built to be above the ordinary.",
+            "text": "Great ride, doesn't have to come at a great cost..",
             "button": "Explore products",
             "link": "/pages/products",
             "text_color": "#f0f0f2"
@@ -225,49 +225,6 @@
         "item4"
       ]
     },
-    "explore": {
-      "type": "pq-tiles",
-      "settings": {
-        "layout": "explore",
-        "heading": "Explore more ways to ride",
-        "text": "From daily journeys to weekend adventures. Find your own way with Panquire.",
-        "button": "Explore products",
-        "link": "/pages/products",
-        "columns": 3,
-        "spacing": 70
-      },
-      "blocks": {
-        "item1": {
-          "type": "tile",
-          "settings": {
-            "heading": "Everyday rides",
-            "text": "Explore the collection",
-            "link": "/pages/products"
-          }
-        },
-        "item2": {
-          "type": "tile",
-          "settings": {
-            "heading": "Urban adventures",
-            "text": "Explore the collection",
-            "link": "/pages/products"
-          }
-        },
-        "item3": {
-          "type": "tile",
-          "settings": {
-            "heading": "New directions",
-            "text": "Explore the collection",
-            "link": "/pages/products"
-          }
-        }
-      },
-      "block_order": [
-        "item1",
-        "item2",
-        "item3"
-      ]
-    },
     "experts": {
       "type": "pq-reviews",
       "settings": {
@@ -288,114 +245,6 @@
         "item3": {
           "type": "review",
           "settings": {}
-        }
-      },
-      "block_order": [
-        "item1",
-        "item2",
-        "item3"
-      ]
-    },
-    "promotions": {
-      "type": "pq-tiles",
-      "settings": {
-        "layout": "promos",
-        "heading": "",
-        "columns": 2,
-        "spacing": 60
-      },
-      "blocks": {
-        "item1": {
-          "type": "tile",
-          "settings": {
-            "heading": "Ways to make it yours",
-            "text": "Payment information will be available here."
-          }
-        },
-        "item2": {
-          "type": "tile",
-          "settings": {
-            "heading": "Support for your journey",
-            "text": "Warranty and support information coming soon."
-          }
-        }
-      },
-      "block_order": [
-        "item1",
-        "item2"
-      ]
-    },
-    "riders": {
-      "type": "pq-reviews",
-      "settings": {
-        "layout": "riders",
-        "heading": "The Panquire community",
-        "text": "",
-        "spacing": 50
-      },
-      "blocks": {
-        "item1": {
-          "type": "review",
-          "settings": {}
-        },
-        "item2": {
-          "type": "review",
-          "settings": {}
-        },
-        "item3": {
-          "type": "review",
-          "settings": {}
-        },
-        "item4": {
-          "type": "review",
-          "settings": {}
-        },
-        "item5": {
-          "type": "review",
-          "settings": {}
-        }
-      },
-      "block_order": [
-        "item1",
-        "item2",
-        "item3",
-        "item4",
-        "item5"
-      ]
-    },
-    "journal": {
-      "type": "pq-tiles",
-      "settings": {
-        "layout": "journal",
-        "heading": "From the journal",
-        "text": "",
-        "columns": 3,
-        "spacing": 60
-      },
-      "blocks": {
-        "item1": {
-          "type": "tile",
-          "settings": {
-            "heading": "Getting ready for your first ride",
-            "caption": "Coming soon",
-            "text": "Stories and guides from Panquire."
-          }
-        },
-        "item2": {
-          "type": "tile",
-          "settings": {
-            "heading": "Finding your everyday route",
-            "caption": "Coming soon",
-            "text": "Stories and guides from Panquire."
-          }
-        },
-        "item3": {
-          "type": "tile",
-          "settings": {
-            "heading": "Looking after your ride",
-            "caption": "Coming soon",
-            "text": "Stories and guides from Panquire."
-          }
         }
       },
       "block_order": [
@@ -451,11 +300,7 @@
     "benefits",
     "feature",
     "products",
-    "explore",
     "experts",
-    "promotions",
-    "riders",
-    "journal",
     "newsletter"
   ]
 }

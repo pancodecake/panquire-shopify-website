@@ -5,6 +5,7 @@ const path = require('path');
 const http = require('http');
 const { Liquid } = require('../.preview-runtime/node_modules/liquidjs');
 const root = path.resolve(__dirname, '..');
+const liveClients = new Set();
 const read = p => fs.readFileSync(path.join(root,p),'utf8');
 const json = p => JSON.parse(read(p).replace(/^\s*\/\*[\s\S]*?\*\//,'').replace(/^\s*\/\/.*$/gm,''));
 function prepare(s) {
@@ -81,11 +82,18 @@ async function page(pathname) {
   let top='',bottom='';for(const id of header.order)top+=await section(id,header.sections[id]);for(const id of footer.order)bottom+=await section(id,footer.sections[id]);
   const tokens=await engine.parseAndRender(prepare(read('snippets/pq-color-tokens.liquid')),env);
   const nativeTokens=await engine.parseAndRender(prepare(read('snippets/theme-styles-variables.liquid')),env,{globals:env});
-  return `<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Panquire — local theme preview</title><link rel="stylesheet" href="/assets/base.css">${nativeTokens}${tokens}<link rel="stylesheet" href="/assets/panquire.css"><link rel="stylesheet" href="/assets/panquire-product.css"><link rel="stylesheet" href="/assets/panquire-pages.css"><style>body{margin:0;font-family:Arial,sans-serif}.preview-bar{padding:10px 16px;background:#18191d;color:#f0f0f2;text-align:center;font:13px/1.5 Arial}.preview-bar a{color:inherit;margin:0 12px;text-decoration:underline}.product-information{--page-width:1050px;--page-margin:24px;--page-width-margin:48px;--normal-page-width:1050px}.product-information__grid{column-gap:0}.product-details{min-width:0}.view-product-title{display:none}.pq-storefront .button{padding:14px 24px;min-height:44px;border:0;border-radius:4px}.pq-storefront input{color:var(--text);background:var(--surface)}.group-block{min-width:0}</style></head><body class="pq-storefront page-width-narrow"><div class="preview-bar">Local Liquid preview · sample product · Shopify checkout unavailable <a href="/">Homepage</a><a href="/products/preview">Product page</a><a href="/pages/about">About</a><a href="/pages/partners">Partners</a><a href="/pages/terms">Terms</a></div><div id="header-group">${top}</div><main id="MainContent">${content}</main>${bottom}<script src="/assets/panquire.js" defer></script><script src="/assets/panquire-pages.js" defer></script><script>document.addEventListener('submit',e=>{e.preventDefault();if(e.target.matches('.pq-policy-search'))return;alert('This is a local visual preview. Forms and checkout work on Shopify.');});</script></body></html>`;
+  return `<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Panquire — local theme preview</title><link rel="stylesheet" href="/assets/base.css">${nativeTokens}${tokens}<link rel="stylesheet" href="/assets/panquire.css"><link rel="stylesheet" href="/assets/panquire-product.css"><link rel="stylesheet" href="/assets/panquire-pages.css"><style>body{margin:0;font-family:Arial,sans-serif}.preview-bar{padding:10px 16px;background:#18191d;color:#f0f0f2;text-align:center;font:13px/1.5 Arial}.preview-bar a{color:inherit;margin:0 12px;text-decoration:underline}.product-information{--page-width:1050px;--page-margin:24px;--page-width-margin:48px;--normal-page-width:1050px}.product-information__grid{column-gap:0}.product-details{min-width:0}.view-product-title{display:none}.pq-storefront .button{padding:14px 24px;min-height:44px;border:0;border-radius:4px}.pq-storefront input{color:var(--text);background:var(--surface)}.group-block{min-width:0}</style></head><body class="pq-storefront page-width-narrow"><div class="preview-bar">Local Liquid preview · sample product · Shopify checkout unavailable <a href="/">Homepage</a><a href="/products/preview">Product page</a><a href="/pages/about">About</a><a href="/pages/partners">Partners</a><a href="/pages/terms">Terms</a></div><div id="header-group">${top}</div><main id="MainContent">${content}</main>${bottom}<script src="/assets/panquire.js" defer></script><script src="/assets/panquire-pages.js" defer></script><script>document.addEventListener('submit',e=>{e.preventDefault();if(e.target.matches('.pq-policy-search'))return;alert('This is a local visual preview. Forms and checkout work on Shopify.');});new EventSource('/__live').onmessage=e=>{if(e.data==='reload')location.reload();};</script></body></html>`;
 }
-http.createServer(async(req,res)=>{
+const server = http.createServer(async(req,res)=>{
   try {
     const url=new URL(req.url,'http://localhost');
+    if(url.pathname==='/__live') {
+      res.writeHead(200,{'Content-Type':'text/event-stream','Cache-Control':'no-cache','Connection':'keep-alive','Access-Control-Allow-Origin':'*'});
+      res.write(': connected\n\n');
+      liveClients.add(res);
+      req.on('close',()=>liveClients.delete(res));
+      return;
+    }
     if(url.pathname.startsWith('/assets/')) {
       const file=path.resolve(root,'.'+decodeURIComponent(url.pathname));
       if(!file.startsWith(path.join(root,'assets')+path.sep)||!fs.existsSync(file)){res.writeHead(404);return res.end();}
@@ -94,4 +102,15 @@ http.createServer(async(req,res)=>{
     if(!pageTemplates[url.pathname]) {res.writeHead(200,{'Content-Type':'text/html'});return res.end('<p>This route requires Shopify. <a href="/">Homepage</a> · <a href="/products/preview">Product preview</a></p>');}
     res.setHeader('Content-Type','text/html; charset=utf-8');res.end(await page(url.pathname));
   }catch(e){console.error(e.stack);res.writeHead(500,{'Content-Type':'text/plain'});res.end(e.stack);}
-}).listen(9393,'127.0.0.1',()=>console.log('Local Liquid preview: http://127.0.0.1:9393'));
+});
+server.listen(9393,'127.0.0.1',()=>console.log('Local Liquid preview: http://127.0.0.1:9393'));
+
+let reloadTimer;
+fs.watch(root,{recursive:true},(_,filename)=>{
+  const changed = String(filename || '').replaceAll('\\','/');
+  if (!changed || changed.startsWith('.git/') || changed.startsWith('.preview-runtime/') || changed.startsWith('docs/')) return;
+  clearTimeout(reloadTimer);
+  reloadTimer=setTimeout(()=>{
+    for(const client of liveClients) client.write('data: reload\n\n');
+  },150);
+});

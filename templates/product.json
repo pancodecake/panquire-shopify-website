@@ -583,17 +583,6 @@
         "spacing": 100
       }
     },
-    "action": {
-      "type": "pq-product-story",
-      "settings": {
-        "layout": "panorama",
-        "full_width": true,
-        "heading": "A different kind of escape.",
-        "media_label": "Full-width riding image placeholder",
-        "height": 650,
-        "spacing": 50
-      }
-    },
     "specifications": {
       "type": "pq-product-specs",
       "settings": {
@@ -761,7 +750,6 @@
     "ride_story",
     "features",
     "display",
-    "action",
     "specifications",
     "comparison",
     "closing",
