@@ -1,0 +1,39 @@
+<section class="pq pq-story pq-story--{{ section.settings.layout }}" style="--pq-story-height: {{ section.settings.height }}px; --pq-space: {{ section.settings.spacing }}px;">
+  <div class="{% unless section.settings.full_width %}pq-container{% endunless %} pq-story-layout">
+    <div class="pq-story-media">
+      {% if section.settings.video != blank %}
+        {{ section.settings.video | video_tag: controls: true, autoplay: false, loop: false, preload: 'none', image_size: '1600x' }}
+      {% else %}
+        {% render 'pq-media', image: section.settings.image, label: section.settings.media_label, sizes: '(min-width: 1100px) 1050px, 100vw' %}
+      {% endif %}
+    </div>
+    {% if section.settings.heading != blank or section.settings.text != blank %}
+      <div class="pq-story-copy">
+        {% if section.settings.eyebrow != blank %}<p class="pq-story-eyebrow">{{ section.settings.eyebrow | escape }}</p>{% endif %}
+        {% if section.settings.heading != blank %}<h2>{{ section.settings.heading | escape | newline_to_br }}</h2>{% endif %}
+        {% if section.settings.text != blank %}<div class="rte">{{ section.settings.text }}</div>{% endif %}
+        {% if section.settings.link != blank and section.settings.button != blank %}<a class="pq-button pq-button--accent" href="{{ section.settings.link }}">{{ section.settings.button | escape }}</a>{% endif %}
+      </div>
+    {% endif %}
+  </div>
+</section>
+{% schema %}
+{
+  "name": "Panquire product story",
+  "settings": [
+    {"type":"select","id":"layout","label":"Composition","options":[{"value":"panorama","label":"Panoramic media with heading"},{"value":"editorial","label":"Centered story above media"},{"value":"split","label":"Media and text side by side"}],"default":"panorama"},
+    {"type":"checkbox","id":"full_width","label":"Full width","default":false},
+    {"type":"image_picker","id":"image","label":"Image"},
+    {"type":"video","id":"video","label":"Video (replaces image)"},
+    {"type":"text","id":"media_label","label":"Placeholder label","default":"Product image placeholder"},
+    {"type":"text","id":"eyebrow","label":"Small heading"},
+    {"type":"textarea","id":"heading","label":"Heading","default":"Panoramic view"},
+    {"type":"richtext","id":"text","label":"Description"},
+    {"type":"text","id":"button","label":"Button label"},
+    {"type":"url","id":"link","label":"Button link"},
+    {"type":"range","id":"height","label":"Desktop media height","min":250,"max":900,"step":50,"unit":"px","default":550},
+    {"type":"range","id":"spacing","label":"Section spacing","min":0,"max":160,"step":10,"unit":"px","default":60}
+  ],
+  "presets":[{"name":"Panquire product story"}]
+}
+{% endschema %}

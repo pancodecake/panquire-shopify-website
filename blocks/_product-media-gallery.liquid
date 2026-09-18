@@ -1,4 +1,10 @@
 
+{% if block.settings.pq_placeholder %}
+  <div class="pq pq-product-placeholder" {{ block.shopify_attributes }}>
+    <div class="pq-product-placeholder-main">{% render 'pq-media', label: 'Product image placeholder' %}</div>
+    <div class="pq-product-placeholder-thumbs" aria-hidden="true">{% for i in (1..4) %}<div>{% render 'pq-media', label: 'Product view' %}</div>{% endfor %}</div>
+  </div>
+{% else %}
 {% render 'product-media-gallery-content',
   media_presentation: block.settings.media_presentation,
   block_settings: block.settings,
@@ -8,11 +14,14 @@
   section: section
 %}
 
+{% endif %}
+
 {% schema %}
 {
   "name": "t:names.product_media",
   "tag": null,
   "settings": [
+    {"type":"checkbox","id":"pq_placeholder","label":"Show placeholder media","info":"Turn off when your own product media are ready.","default":false},
     {
       "type": "select",
       "id": "media_presentation",

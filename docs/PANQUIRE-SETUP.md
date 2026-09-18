@@ -1,5 +1,7 @@
 # Panquire theme setup
 
+> Historical setup notes for the earlier homepage. For the current carbon homepage and product implementation, local preview, editing instructions, and unpublished upload command, see [panquire-editing-guide.md](panquire-editing-guide.md). Current verification is in [panquire-carbon-review.md](panquire-carbon-review.md).
+
 The homepage is implemented in native Shopify Online Store 2.0 Liquid. It uses the existing Horizon theme; no React app, external UI library, app installation, or new base theme is required. Nothing has been uploaded or published.
 
 ## Preview

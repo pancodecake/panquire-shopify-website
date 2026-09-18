@@ -1,12 +1,4 @@
-/*
- * ------------------------------------------------------------
- * IMPORTANT: The contents of this file are auto-generated.
- *
- * This file may be updated by the Shopify admin theme editor
- * or related systems. Please exercise caution as any changes
- * made to this file may be overwritten.
- * ------------------------------------------------------------
- */{
+{
   "sections": {
     "main": {
       "type": "product-information",
@@ -34,13 +26,13 @@
           "type": "_product-media-gallery",
           "static": true,
           "settings": {
-            "media_presentation": "grid",
+            "media_presentation": "carousel",
             "media_columns": "two",
             "image_gap": 4,
             "large_first_image": false,
             "slideshow_controls_style": "counter",
             "slideshow_mobile_controls_style": "dots",
-            "thumbnail_position": "right",
+            "thumbnail_position": "bottom",
             "thumbnail_width": 44,
             "thumbnail_radius": 0,
             "aspect_ratio": "adapt",
@@ -54,7 +46,8 @@
             "padding-block-start": 0,
             "padding-block-end": 0,
             "padding-inline-start": 0,
-            "padding-inline-end": 0
+            "padding-inline-end": 0,
+            "pq_placeholder": true
           },
           "blocks": {}
         },
@@ -68,8 +61,8 @@
             "custom_width_mobile": 100,
             "height": "fit",
             "details_position": "flex-start",
-            "gap": 28,
-            "sticky_details_desktop": true,
+            "gap": 20,
+            "sticky_details_desktop": false,
             "background_media": "none",
             "background_color": "",
             "video_position": "cover",
@@ -298,6 +291,34 @@
                 "padding-inline-end": 0
               },
               "blocks": {}
+            },
+            "shipping": {
+              "type": "pq-product-accordion",
+              "settings": {
+                "heading": "Shipping & returns",
+                "text": "<p>Shipping and returns information will be available here.</p>",
+                "open": false
+              }
+            },
+            "warranty": {
+              "type": "pq-product-accordion",
+              "settings": {
+                "heading": "Warranty & support",
+                "text": "<p>Warranty details will be available here.</p>",
+                "open": false
+              }
+            },
+            "box": {
+              "type": "pq-product-accordion",
+              "settings": {
+                "heading": "In the box",
+                "text": "<p>Included items will be listed here.</p>",
+                "open": false
+              }
+            },
+            "highlights": {
+              "type": "pq-product-highlights",
+              "settings": {}
             }
           },
           "block_order": [
@@ -305,7 +326,11 @@
             "divider_VJhene",
             "variant_picker_R3rGDr",
             "buy_buttons_eYQEYi",
-            "text_aEtTtq"
+            "highlights",
+            "text_aEtTtq",
+            "shipping",
+            "warranty",
+            "box"
           ]
         }
       },
@@ -320,8 +345,8 @@
         "gap": 48,
         "enable_sticky_add_to_cart": true,
         "background_color": "{{ settings.color_palette.background }}",
-        "padding-block-start": 0,
-        "padding-block-end": 0
+        "padding-block-start": 40,
+        "padding-block-end": 70
       }
     },
     "product_recommendations_qggXJq": {
@@ -464,11 +489,282 @@
         "background_color": "{{ settings.color_palette.background }}",
         "padding-block-start": 48,
         "padding-block-end": 48
+      },
+      "disabled": true
+    },
+    "panorama": {
+      "type": "pq-product-story",
+      "settings": {
+        "layout": "panorama",
+        "full_width": true,
+        "heading": "Panoramic view",
+        "media_label": "Panoramic product image placeholder",
+        "height": 650,
+        "spacing": 0
+      }
+    },
+    "ride_film": {
+      "type": "pq-product-story",
+      "settings": {
+        "layout": "panorama",
+        "full_width": true,
+        "heading": "",
+        "media_label": "Riding film placeholder",
+        "height": 450,
+        "spacing": 0
+      }
+    },
+    "ride_story": {
+      "type": "pq-product-story",
+      "settings": {
+        "layout": "editorial",
+        "heading": "Small footprint.\nBig adventure.",
+        "text": "<p>A new perspective on the everyday ride. Discover the Panquire collection.</p>",
+        "media_label": "Outdoor riding image placeholder",
+        "height": 450,
+        "spacing": 90
+      }
+    },
+    "features": {
+      "type": "pq-product-features",
+      "settings": {
+        "heading": "Explore every detail",
+        "spacing": 70
+      },
+      "blocks": {
+        "item1": {
+          "type": "feature",
+          "settings": {
+            "heading": "Power on demand",
+            "text": "Motor specifications coming soon.",
+            "media_label": "Motor detail placeholder"
+          }
+        },
+        "item2": {
+          "type": "feature",
+          "settings": {
+            "heading": "Take the long way",
+            "text": "Riding review coming soon.",
+            "media_label": "Riding review placeholder"
+          }
+        },
+        "item3": {
+          "type": "feature",
+          "settings": {
+            "heading": "Energy for the journey",
+            "text": "Battery specifications coming soon.",
+            "media_label": "Battery detail placeholder"
+          }
+        },
+        "item4": {
+          "type": "feature",
+          "settings": {
+            "heading": "Comfort in every turn",
+            "text": "Suspension specifications coming soon.",
+            "media_label": "Suspension detail placeholder"
+          }
+        }
+      },
+      "block_order": [
+        "item1",
+        "item2",
+        "item3",
+        "item4"
+      ]
+    },
+    "display": {
+      "type": "pq-product-story",
+      "settings": {
+        "layout": "split",
+        "heading": "Your ride.\nYour way.",
+        "text": "<p>Discover the controls, riding modes, and details that make this model yours. Full feature information coming soon.</p>",
+        "media_label": "Display detail placeholder",
+        "height": 450,
+        "spacing": 100
+      }
+    },
+    "action": {
+      "type": "pq-product-story",
+      "settings": {
+        "layout": "panorama",
+        "full_width": true,
+        "heading": "A different kind of escape.",
+        "media_label": "Full-width riding image placeholder",
+        "height": 650,
+        "spacing": 50
+      }
+    },
+    "specifications": {
+      "type": "pq-product-specs",
+      "settings": {
+        "heading": "Specs & parameters",
+        "media_label": "Dimension diagram placeholder",
+        "spacing": 80
+      },
+      "blocks": {
+        "item1": {
+          "type": "group",
+          "settings": {
+            "heading": "Size & fit",
+            "rows": "Overall length | Coming soon\nSeat height | Coming soon\nWheelbase | Coming soon\nRider height | Coming soon"
+          }
+        },
+        "item2": {
+          "type": "group",
+          "settings": {
+            "heading": "Technical",
+            "rows": "Motor | Coming soon\nBattery | Coming soon\nCharging time | Coming soon\nBike weight | Coming soon"
+          }
+        },
+        "item3": {
+          "type": "group",
+          "settings": {
+            "heading": "Performance",
+            "rows": "Range | Coming soon\nTop speed | Coming soon\nSuspension travel | Coming soon"
+          }
+        },
+        "item4": {
+          "type": "group",
+          "settings": {
+            "heading": "Frequently asked questions",
+            "text": "<p>Model-specific answers will be added here.</p>",
+            "rows": ""
+          }
+        }
+      },
+      "block_order": [
+        "item1",
+        "item2",
+        "item3",
+        "item4"
+      ]
+    },
+    "comparison": {
+      "type": "pq-product-comparison",
+      "settings": {
+        "heading": "Parameter comparison",
+        "model_a": "Panquire 01",
+        "model_b": "Panquire 02",
+        "spacing": 70
+      },
+      "blocks": {
+        "item1": {
+          "type": "row",
+          "settings": {
+            "label": "Motor",
+            "value_a": "Coming soon",
+            "value_b": "Coming soon"
+          }
+        },
+        "item2": {
+          "type": "row",
+          "settings": {
+            "label": "Battery",
+            "value_a": "Coming soon",
+            "value_b": "Coming soon"
+          }
+        },
+        "item3": {
+          "type": "row",
+          "settings": {
+            "label": "Torque",
+            "value_a": "Coming soon",
+            "value_b": "Coming soon"
+          }
+        },
+        "item4": {
+          "type": "row",
+          "settings": {
+            "label": "Range",
+            "value_a": "Coming soon",
+            "value_b": "Coming soon"
+          }
+        },
+        "item5": {
+          "type": "row",
+          "settings": {
+            "label": "Top speed",
+            "value_a": "Coming soon",
+            "value_b": "Coming soon"
+          }
+        },
+        "item6": {
+          "type": "row",
+          "settings": {
+            "label": "Weight",
+            "value_a": "Coming soon",
+            "value_b": "Coming soon"
+          }
+        },
+        "item7": {
+          "type": "row",
+          "settings": {
+            "label": "Wheel size",
+            "value_a": "Coming soon",
+            "value_b": "Coming soon"
+          }
+        },
+        "item8": {
+          "type": "row",
+          "settings": {
+            "label": "Seat height",
+            "value_a": "Coming soon",
+            "value_b": "Coming soon"
+          }
+        },
+        "item9": {
+          "type": "row",
+          "settings": {
+            "label": "Suspension",
+            "value_a": "Coming soon",
+            "value_b": "Coming soon"
+          }
+        },
+        "item10": {
+          "type": "row",
+          "settings": {
+            "label": "Brakes",
+            "value_a": "Coming soon",
+            "value_b": "Coming soon"
+          }
+        }
+      },
+      "block_order": [
+        "item1",
+        "item2",
+        "item3",
+        "item4",
+        "item5",
+        "item6",
+        "item7",
+        "item8",
+        "item9",
+        "item10"
+      ]
+    },
+    "closing": {
+      "type": "pq-product-story",
+      "settings": {
+        "layout": "panorama",
+        "full_width": true,
+        "heading": "Find your next adventure.",
+        "media_label": "Closing campaign image placeholder",
+        "height": 500,
+        "spacing": 0
       }
     }
   },
   "order": [
     "main",
+    "panorama",
+    "ride_film",
+    "ride_story",
+    "features",
+    "display",
+    "action",
+    "specifications",
+    "comparison",
+    "closing",
     "product_recommendations_qggXJq"
   ]
 }

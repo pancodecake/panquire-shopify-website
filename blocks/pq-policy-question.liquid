@@ -1,0 +1,14 @@
+<details class="pq-policy-question" data-pq-policy-question {{ block.shopify_attributes }}>
+  <summary id="Question-{{ block.id }}"><span data-pq-question-text>{{ block.settings.question | escape }}</span><span class="pq-policy-toggle" aria-hidden="true"></span></summary>
+  <div class="pq-prose pq-policy-answer" role="region" aria-labelledby="Question-{{ block.id }}" data-pq-answer>{{ block.settings.answer }}</div>
+</details>
+{% schema %}
+{
+  "name":"Policy question","tag":null,
+  "settings":[
+    {"type":"text","id":"question","label":"Question","default":"Your question"},
+    {"type":"richtext","id":"answer","label":"Answer","default":"<p>[Not specified in source]</p>"}
+  ],
+  "presets":[{"name":"Policy question"}]
+}
+{% endschema %}

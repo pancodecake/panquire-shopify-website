@@ -1,0 +1,48 @@
+<div class="pq pq-about" data-pq-story>
+  <div class="pq-container pq-about-intro"><p>{{ section.settings.eyebrow | escape }}</p><h1>{{ section.settings.title | escape }}</h1></div>
+  {% for block in section.blocks %}
+    <section class="pq-about-chapter" id="Chapter-{{ section.id }}-{{ block.id }}" aria-labelledby="ChapterHeading-{{ block.id }}" {{ block.shopify_attributes }}>
+      <div class="pq-about-atmosphere" aria-hidden="true">
+        <div class="pq-about-background" data-pq-parallax>
+          {% if block.settings.image != blank %}
+            <picture>
+              {% if block.settings.mobile_image != blank %}<source media="(max-width: 749px)" srcset="{{ block.settings.mobile_image | image_url: width: 1000 }}">{% endif %}
+              {{ block.settings.image | image_url: width: 2400 | image_tag: widths: '750, 1100, 1600, 2400', sizes: '100vw', loading: 'lazy', alt: '' }}
+            </picture>
+          {% else %}<div class="pq-about-image-placeholder"></div>{% endif %}
+        </div>
+      </div>
+      <div class="pq-container pq-about-content" data-pq-reveal>
+        <p class="pq-chapter-marker"><span>{{ forloop.index | prepend: '0' }}</span><span>{{ section.settings.chapter_label | escape }}</span></p>
+        <div class="pq-about-narrative">
+          <h2 id="ChapterHeading-{{ block.id }}">{{ block.settings.heading | escape }}</h2>
+          <div class="pq-prose">{{ block.settings.body }}</div>
+          {% if block.settings.bridge != blank %}<p class="pq-about-bridge">{{ block.settings.bridge | escape }}</p>{% endif %}
+          {% if forloop.last and section.settings.link != blank %}<a class="pq-button pq-button--dark" href="{{ section.settings.link }}">{{ section.settings.button | escape }}</a>{% endif %}
+        </div>
+      </div>
+      {% if block.settings.image == blank %}<span class="pq-about-placeholder-label" aria-hidden="true">{{ block.settings.placeholder | escape }}</span>{% endif %}
+    </section>
+  {% endfor %}
+</div>
+{% schema %}
+{
+  "name":"Panquire about story","max_blocks":4,
+  "settings":[
+    {"type":"text","id":"eyebrow","label":"Small heading","default":"About Panquire"},
+    {"type":"text","id":"title","label":"Page heading","default":"A different way forward."},
+    {"type":"text","id":"chapter_label","label":"Chapter marker","default":"The Panquire story"},
+    {"type":"text","id":"button","label":"Closing button","default":"Explore our collection"},
+    {"type":"url","id":"link","label":"Closing link","default":"/collections/all"}
+  ],
+  "blocks":[{"type":"chapter","name":"Story chapter","settings":[
+    {"type":"text","id":"heading","label":"Heading","default":"Who We Are"},
+    {"type":"richtext","id":"body","label":"Chapter text","default":"<p>Tell your story here.</p>"},
+    {"type":"textarea","id":"bridge","label":"Transition into next chapter"},
+    {"type":"image_picker","id":"image","label":"Background image"},
+    {"type":"image_picker","id":"mobile_image","label":"Mobile background (optional)"},
+    {"type":"text","id":"placeholder","label":"Placeholder caption","default":"Atmospheric image placeholder"}
+  ]}],
+  "presets":[{"name":"Panquire about story","blocks":[{"type":"chapter"},{"type":"chapter"},{"type":"chapter"},{"type":"chapter"}]}]
+}
+{% endschema %}

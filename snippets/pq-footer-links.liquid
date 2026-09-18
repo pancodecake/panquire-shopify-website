@@ -1,0 +1,30 @@
+{% doc %}
+  Default footer destinations; a merchant-selected column menu can replace these.
+  @param {object} block - Footer column and product selections.
+  @param {object} footer_settings - Footer destination settings.
+{% enddoc %}
+{% assign partner_url = settings.pq_partners_url | default: '/pages/partners' %}
+{% assign terms_url = settings.pq_terms_url | default: '/pages/terms' %}
+<nav aria-label="{{ block.settings.heading | escape }}">
+  {% case block.settings.built_in %}
+    {% when 'shop' %}
+      {% for i in (1..2) %}
+        {% assign product_key = 'product_' | append: i %}{% assign label_key = product_key | append: '_label' %}{% assign footer_product = block.settings[product_key] %}
+        {% if footer_product != blank %}<a href="{{ footer_product.url }}">{{ footer_product.title | escape }}</a>{% else %}<span class="pq-footer-product-placeholder">{{ block.settings[label_key] | escape }}</span>{% endif %}
+      {% endfor %}
+      <a href="{{ routes.all_products_collection_url }}">All Products</a>
+    {% when 'company' %}
+      <a href="{{ settings.pq_about_url | default: '/pages/about' }}">About Us <span class="pq-footer-link-detail">Our Story, Team &amp; Mission</span></a>
+      <a href="{{ partner_url }}#partners">Strategic Partnerships</a>
+    {% when 'business' %}
+      <a href="{{ partner_url }}#corporate-purchase">Corporate &amp; Bulk Purchase <span class="pq-footer-link-detail">Dealers &amp; Fleet</span></a>
+      <a href="{{ partner_url }}#affiliate-program">Affiliate Program</a>
+      <a href="{{ partner_url }}#affiliate-terms">Affiliate Terms</a>
+    {% when 'care' %}
+      <a href="{{ footer_settings.contact_url | default: '/pages/contact' }}">Contact Us</a>
+      <a href="{{ terms_url }}#shipping">Shipping Policy</a>
+      <a href="{{ terms_url }}#payment">Payment Methods</a>
+      <a href="{{ terms_url }}#warranty">Warranty Policy</a>
+      <a href="{{ terms_url }}#returns-refunds">Returns &amp; Refunds</a>
+  {% endcase %}
+</nav>

@@ -1,0 +1,39 @@
+<section class="pq pq-terms" data-pq-terms data-result-label="{{ section.settings.results_label | escape }}" data-topic-label="{{ section.settings.topic_label | escape }}" data-searching-label="{{ section.settings.searching_label | escape }}">
+  <div class="pq-container">
+    <header class="pq-page-intro"><p>{{ section.settings.eyebrow | escape }}</p><h1>{{ section.settings.heading | escape }}</h1><div class="pq-prose">{{ section.settings.intro }}</div></header>
+    <div class="pq-terms-tools" data-pq-terms-tools hidden>
+      <form class="pq-policy-search" role="search" aria-label="{{ section.settings.search_label | escape }}">
+        <label for="PolicySearch-{{ section.id }}">{{ section.settings.search_label | escape }}</label>
+        <div class="pq-policy-search-row">
+          {% render 'pq-icon', name: 'search' %}
+          <input id="PolicySearch-{{ section.id }}" type="search" autocomplete="off" placeholder="{{ section.settings.placeholder | escape }}" aria-controls="PolicyPanels-{{ section.id }}" data-pq-policy-search>
+          <button type="button" data-pq-policy-clear>{{ section.settings.clear_label | escape }}</button>
+        </div>
+      </form>
+      <div class="pq-policy-tabs" role="tablist" aria-label="{{ section.settings.tabs_label | escape }}" data-pq-policy-tabs></div>
+      <p class="pq-policy-status" role="status" aria-live="polite" aria-atomic="true" data-pq-policy-status></p>
+    </div>
+    <div id="PolicyPanels-{{ section.id }}" class="pq-policy-panels">{% content_for 'blocks' %}</div>
+    <p class="pq-policy-empty" data-pq-policy-empty hidden>{{ section.settings.empty_label | escape }}</p>
+  </div>
+</section>
+{% schema %}
+{
+  "name":"Panquire terms & policies","max_blocks":4,"limit":1,
+  "settings":[
+    {"type":"text","id":"eyebrow","label":"Small heading","default":"Customer care"},
+    {"type":"text","id":"heading","label":"Page heading","default":"Terms of Service"},
+    {"type":"richtext","id":"intro","label":"Introduction","default":"<p>Payment, delivery, warranty, and returns. Find the information you need for your order.</p>"},
+    {"type":"text","id":"search_label","label":"Search label","default":"Search all policies"},
+    {"type":"text","id":"placeholder","label":"Search placeholder","default":"Try battery, shipping, or refund"},
+    {"type":"text","id":"clear_label","label":"Reset button","default":"Clear"},
+    {"type":"text","id":"tabs_label","label":"Tabs label","default":"Policy topics"},
+    {"type":"text","id":"results_label","label":"Result count text","default":"results across all topics"},
+    {"type":"text","id":"topic_label","label":"Topic count text","default":"in this topic"},
+    {"type":"text","id":"searching_label","label":"Search scope message","default":"Search covers every topic. Choose a tab to view its matching answers."},
+    {"type":"text","id":"empty_label","label":"No results message","default":"No results in this topic. Try another tab, change your search, or select Clear to see all questions."}
+  ],
+  "blocks":[{"type":"pq-policy-category"}],
+  "presets":[{"name":"Panquire terms & policies","blocks":[{"type":"pq-policy-category"}]}]
+}
+{% endschema %}

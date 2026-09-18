@@ -1,0 +1,15 @@
+{% doc %}
+  Merchant-editable carbon, silver and crimson palette shared by all pages.
+{% enddoc %}
+{% style %}
+  :root {
+    --carbon-base: {{ settings.pq_background | default: '#08090b' }};
+    --carbon-gradient: {{ settings.pq_carbon_gradient | default: 'linear-gradient(135deg, #08090b 0%, #141518 50%, #0a0b0d 100%)' }};
+    --silver-gradient: {{ settings.pq_silver_gradient | default: 'linear-gradient(110deg, #a5a7ac 0%, #e5e6e8 50%, #b5b7bc 100%)' }};
+    --crimson-gradient: {{ settings.pq_crimson_gradient | default: 'linear-gradient(135deg, #650f20 0%, #951c32 50%, #741226 100%)' }};
+    --surface: {{ settings.pq_surface | default: '#18191d' }};
+    --text: {{ settings.pq_text | default: '#f0f0f2' }};
+    --text-muted: {{ settings.pq_text_muted | default: '#b5b6be' }};
+    --pq-crimson: {{ settings.pq_accent | default: '#951c32' }};
+  }
+{% endstyle %}

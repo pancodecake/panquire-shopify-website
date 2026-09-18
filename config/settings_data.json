@@ -1,12 +1,3 @@
-/*
- * ------------------------------------------------------------
- * IMPORTANT: The contents of this file are auto-generated.
- *
- * This file may be updated by the Shopify admin theme editor
- * or related systems. Please exercise caution as any changes
- * made to this file may be overwritten.
- * ------------------------------------------------------------
- */
 {
   "current": {
     "logo_height": 36,
@@ -51,20 +42,20 @@
     "badge_corner_radius": 100,
     "badge_sale_background_color": "{{ settings.color_palette.background }}",
     "badge_sale_text_color": "{{ settings.color_palette.foreground }}",
-    "badge_sold_out_background_color": "#eef1ea",
+    "badge_sold_out_background_color": "#18191d",
     "badge_sold_out_text_color": "{{ settings.color_palette.foreground }}",
     "badge_text_transform": "none",
-    "palette_primary_button_background": "{{ settings.color_palette.foreground }}",
-    "palette_primary_button_text": "{{ settings.color_palette.background }}",
-    "palette_primary_button_border": "{{ settings.color_palette.foreground }}",
+    "palette_primary_button_background": "#951c32",
+    "palette_primary_button_text": "#f0f0f2",
+    "palette_primary_button_border": "#951c32",
     "primary_button_border_width": 0,
-    "button_border_radius_primary": 14,
-    "palette_secondary_button_background": "rgba(0,0,0,0)",
-    "palette_secondary_button_text": "{{ settings.color_palette.foreground }}",
-    "palette_secondary_button_border": "{{ settings.color_palette.foreground }}",
+    "button_border_radius_primary": 4,
+    "palette_secondary_button_background": "#e5e6e8",
+    "palette_secondary_button_text": "#08090b",
+    "palette_secondary_button_border": "#e5e6e8",
     "secondary_button_border_width": 1,
-    "button_border_radius_secondary": 14,
-    "cart_type": "drawer",
+    "button_border_radius_secondary": 4,
+    "cart_type": "page",
     "cart_price_font": "subheading",
     "show_cart_note": false,
     "show_add_discount_code": true,
@@ -72,9 +63,9 @@
     "drawer_text_color": "{{ settings.color_palette.foreground }}",
     "drawer_border_color": "{{ settings.color_palette.color2 }}",
     "icon_stroke": "default",
-    "palette_input_background": "{{ settings.color_palette.background }}",
-    "palette_input_text": "{{ settings.color_palette.color1 }}",
-    "palette_input_border": "{{ settings.color_palette.color2 }}",
+    "palette_input_background": "#18191d",
+    "palette_input_text": "#f0f0f2",
+    "palette_input_border": "#767881",
     "input_border_width": 1,
     "inputs_border_radius": 4,
     "popover_background_color": "{{ settings.color_palette.background }}",
@@ -100,14 +91,16 @@
     "palette_selected_variant_text": "{{ settings.color_palette.background }}",
     "palette_selected_variant_border": "{{ settings.color_palette.foreground }}",
     "variant_button_border_width": 1,
-    "variant_button_radius": 14,
+    "variant_button_radius": 4,
     "variant_button_width": "equal-width-buttons",
     "color_palette": {
-      "background": "#ffffff",
-      "foreground": "#000000",
-      "color1": "#333333",
-      "color2": "#DFDFDF"
-    }
+      "background": "#08090b",
+      "foreground": "#f0f0f2",
+      "color1": "#b5b6be",
+      "color2": "#55575f"
+    },
+    "pq_background": "#08090b",
+    "pq_accent": "#951c32"
   },
   "presets": {
     "Horizon": {

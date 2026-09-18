@@ -1,0 +1,15 @@
+<section class="pq-policy-category" id="{{ block.settings.anchor | handleize }}" data-pq-policy-panel data-title="{{ block.settings.heading | escape }}" aria-labelledby="PolicyHeading-{{ block.id }}" {{ block.shopify_attributes }}>
+  <h2 id="PolicyHeading-{{ block.id }}">{{ block.settings.heading | escape }}</h2>
+  <div class="pq-policy-questions">{% content_for 'blocks' %}</div>
+</section>
+{% schema %}
+{
+  "name":"Policy topic","tag":null,
+  "settings":[
+    {"type":"text","id":"heading","label":"Topic title","default":"Payment"},
+    {"type":"select","id":"anchor","label":"Topic link","options":[{"value":"payment","label":"Payment"},{"value":"shipping","label":"Shipping"},{"value":"warranty","label":"Warranty"},{"value":"returns-refunds","label":"Returns and Refunds"}],"default":"payment","info":"Use each topic once. Footer links use these anchors."}
+  ],
+  "blocks":[{"type":"pq-policy-question"}],
+  "presets":[{"name":"Policy topic","blocks":[{"type":"pq-policy-question"}]}]
+}
+{% endschema %}

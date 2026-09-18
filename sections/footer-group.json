@@ -4,7 +4,43 @@
   "sections": {
     "panquire_footer": {
       "type": "pq-footer",
-      "settings": {}
+      "settings": {},
+      "blocks": {
+        "shop": {
+          "type": "column",
+          "settings": {
+            "heading": "Shop",
+            "built_in": "shop"
+          }
+        },
+        "company": {
+          "type": "column",
+          "settings": {
+            "heading": "Company",
+            "built_in": "company"
+          }
+        },
+        "business": {
+          "type": "column",
+          "settings": {
+            "heading": "Business & Partners",
+            "built_in": "business"
+          }
+        },
+        "care": {
+          "type": "column",
+          "settings": {
+            "heading": "Customer Care",
+            "built_in": "care"
+          }
+        }
+      },
+      "block_order": [
+        "shop",
+        "company",
+        "business",
+        "care"
+      ]
     }
   },
   "order": [

@@ -1,5 +1,4 @@
 {% style %}
-  :root { --pq-bg: {{ settings.pq_background | default: '#211f1e' }}; --pq-accent: {{ settings.pq_accent | default: '#f7c343' }}; }
   #shopify-section-{{ section.id }} { position: sticky; top: 0; z-index: 30; }
 {% endstyle %}
 <header class="pq pq-header">
@@ -22,7 +21,7 @@
 {
   "name": "Panquire header",
   "enabled_on": { "groups": ["header"] },
-  "settings": [{ "type": "text", "id": "announcement", "label": "Announcement", "default": "Welcome to Panquire" }],
+  "settings": [{ "type": "text", "id": "announcement", "label": "Announcement", "default": "Welcome to Panquire" }, {"type":"link_list","id":"menu","label":"Main navigation menu"}],
   "presets": [{ "name": "Panquire header" }]
 }
 {% endschema %}

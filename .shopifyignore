@@ -1,0 +1,5 @@
+docs/**
+.firecrawl/**
+.preview-runtime/**
+.gitignore
+

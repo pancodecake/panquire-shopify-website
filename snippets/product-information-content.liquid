@@ -45,7 +45,9 @@
   # Check if product has media
   assign product_has_media = true
   if product.media.size == 0
-    assign product_has_media = false
+    unless media_gallery contains 'pq-product-placeholder'
+      assign product_has_media = false
+    endunless
   endif
 
   # Build product grid class

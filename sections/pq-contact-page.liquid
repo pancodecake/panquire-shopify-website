@@ -1,0 +1,18 @@
+<section class="pq pq-contact-page">
+  <div class="pq-container">
+    <header class="pq-page-intro"><p>{{ section.settings.eyebrow | escape }}</p><h1>{{ section.settings.heading | escape }}</h1><div class="pq-prose">{{ section.settings.text }}</div></header>
+    <div class="pq-contact-form">{% content_for 'blocks' %}</div>
+  </div>
+</section>
+{% schema %}
+{
+  "name":"Panquire contact page",
+  "settings":[
+    {"type":"text","id":"eyebrow","label":"Small heading","default":"Customer care"},
+    {"type":"text","id":"heading","label":"Heading","default":"Contact Us"},
+    {"type":"richtext","id":"text","label":"Introduction","default":"<p>Tell us how we can help. For corporate purchases, include your company name, business type, target models, estimated quantity, and delivery location. For an order enquiry, include your order number.</p>"}
+  ],
+  "blocks":[{"type":"contact-form"}],
+  "presets":[{"name":"Panquire contact page","blocks":[{"type":"contact-form"}]}]
+}
+{% endschema %}

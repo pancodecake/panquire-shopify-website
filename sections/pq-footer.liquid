@@ -1,17 +1,54 @@
-<div class="pq pq-footer">
+<footer class="pq pq-footer">
   <div class="pq-container">
     <a href="{{ routes.root_url }}" class="pq-wordmark pq-footer-brand">{{ settings.pq_store_name | default: 'Panquire' | escape }}</a>
-    {% if section.blocks.size > 0 %}<div class="pq-social-links">{% for block in section.blocks %}{% if block.settings.url != blank %}<a class="pq-button" href="{{ block.settings.url }}" {{ block.shopify_attributes }}>{{ block.settings.label | escape }}</a>{% endif %}{% endfor %}</div>{% endif %}
-    <nav class="pq-footer-nav" aria-label="{{ 'panquire.footer_navigation' | t }}">{% render 'pq-navigation' %}</nav>
+    {% if section.blocks.size > 0 %}<div class="pq-social-links">{% for block in section.blocks %}{% if block.type == 'social' and block.settings.url != blank %}<a class="pq-button" href="{{ block.settings.url }}" {{ block.shopify_attributes }}>{{ block.settings.label | escape }}</a>{% endif %}{% endfor %}</div>{% endif %}
+    <div class="pq-footer-columns">
+      {% for block in section.blocks %}{% if block.type == 'column' %}
+        <div class="pq-footer-column" {{ block.shopify_attributes }}><h2>{{ block.settings.heading | escape }}</h2>
+          {% if block.settings.menu != blank %}<nav aria-label="{{ block.settings.heading | escape }}">{% for link in block.settings.menu.links %}<a href="{{ link.url }}">{{ link.title | escape }}</a>{% endfor %}</nav>
+          {% elsif block.settings.built_in != blank and block.settings.built_in != 'none' %}
+            {% render 'pq-footer-links', block: block, footer_settings: section.settings %}
+          {% elsif block.settings.show_shop %}<a href="{{ routes.all_products_collection_url }}">{{ 'panquire.products' | t }}</a>
+          {% endif %}
+          {% if block.settings.show_policies %}{% for policy in shop.policies %}{% if policy != blank %}<a href="{{ policy.url }}">{{ policy.title | escape }}</a>{% endif %}{% endfor %}{% endif %}
+          {% if block.settings.text != blank %}<div class="rte">{{ block.settings.text }}</div>{% endif %}
+        </div>
+      {% endif %}{% endfor %}
+    </div>
     {% if section.settings.text != blank %}<p class="pq-footer-note">{{ section.settings.text | escape }}</p>{% endif %}
-    <div class="pq-footer-bottom"><span>© {{ 'now' | date: '%Y' }} {{ settings.pq_store_name | default: 'Panquire' | escape }}</span><a href="#MainContent">{{ 'panquire.back_to_top' | t }}</a></div>
+    <div class="pq-footer-bottom">
+      <nav class="pq-footer-legal" aria-label="{{ section.settings.legal_label | escape }}"><a href="{{ settings.pq_terms_url | default: '/pages/terms' }}">{{ section.settings.terms_label | escape }}</a><a href="{{ section.settings.privacy_url | default: '/policies/privacy-policy' }}">{{ section.settings.privacy_label | escape }}</a></nav>
+      <span>© {{ 'now' | date: '%Y' }} {{ settings.pq_store_name | default: 'Panquire' | escape }}. {{ section.settings.rights_text | escape }}</span>
+    </div>
   </div>
-</div>
+</footer>
 {% schema %}
 {
-  "name": "Panquire footer", "enabled_on": { "groups": ["footer"] }, "max_blocks": 5,
-  "settings": [{ "type": "textarea", "id": "text", "label": "Footer note" }],
-  "blocks": [{ "type": "social", "name": "Social link", "settings": [{"type":"text","id":"label","label":"Label","default":"Instagram"},{"type":"url","id":"url","label":"URL"}] }],
+  "name": "Panquire footer", "enabled_on": { "groups": ["footer"] }, "max_blocks": 12,
+  "settings": [
+    {"type":"textarea","id":"text","label":"Footer note"},
+    {"type":"url","id":"contact_url","label":"Contact page","default":"/pages/contact"},
+    {"type":"url","id":"privacy_url","label":"Privacy policy","default":"/policies/privacy-policy"},
+    {"type":"text","id":"legal_label","label":"Legal navigation label","default":"Legal information"},
+    {"type":"text","id":"terms_label","label":"Terms link label","default":"Terms of Service"},
+    {"type":"text","id":"privacy_label","label":"Privacy link label","default":"Privacy Policy"},
+    {"type":"text","id":"rights_text","label":"Copyright text","default":"All rights reserved."}
+  ],
+  "blocks": [
+    { "type": "social", "name": "Social link", "settings": [{"type":"text","id":"label","label":"Label","default":"Instagram"},{"type":"url","id":"url","label":"URL"}] },
+    { "type":"column","name":"Footer column","settings":[
+      {"type":"text","id":"heading","label":"Heading","default":"Company"},
+      {"type":"link_list","id":"menu","label":"Navigation menu"},
+      {"type":"select","id":"built_in","label":"Default links","options":[{"value":"none","label":"None"},{"value":"shop","label":"Shop"},{"value":"company","label":"Company"},{"value":"business","label":"Business & Partners"},{"value":"care","label":"Customer Care"}],"default":"none","info":"A selected navigation menu replaces these defaults."},
+      {"type":"product","id":"product_1","label":"First product"},
+      {"type":"text","id":"product_1_label","label":"First product placeholder","default":"[Product 1 Name]"},
+      {"type":"product","id":"product_2","label":"Second product"},
+      {"type":"text","id":"product_2_label","label":"Second product placeholder","default":"[Product 2 Name]"},
+      {"type":"richtext","id":"text","label":"Text or contact details"},
+      {"type":"checkbox","id":"show_shop","label":"Show all products link","default":false},
+      {"type":"checkbox","id":"show_policies","label":"Show store policy links","default":false}
+    ]}
+  ],
   "presets": [{ "name": "Panquire footer" }]
 }
 {% endschema %}

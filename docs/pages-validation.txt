@@ -1,0 +1,72 @@
+## Validation Summary
+
+**Overall Status:** ✅ VALID
+**Total Files:** 8
+
+## Detailed Results
+
+### File 1
+**Artifact ID:** panquire-pages-20260917
+**Revision:** 1
+*Use same ID & increment revision when retrying on an improvement of this artifact*
+
+**Status:** ✅ SUCCESS
+**Details:** sections/pq-about-story.liquid passed all checks.
+
+### File 2
+**Artifact ID:** panquire-pages-20260917
+**Revision:** 1
+*Use same ID & increment revision when retrying on an improvement of this artifact*
+
+**Status:** ✅ SUCCESS
+**Details:** sections/pq-partners.liquid passed all checks.
+
+### File 3
+**Artifact ID:** panquire-pages-20260917
+**Revision:** 1
+*Use same ID & increment revision when retrying on an improvement of this artifact*
+
+**Status:** ✅ SUCCESS
+**Details:** sections/pq-terms.liquid passed all checks.
+
+### File 4
+**Artifact ID:** panquire-pages-20260917
+**Revision:** 1
+*Use same ID & increment revision when retrying on an improvement of this artifact*
+
+**Status:** ✅ SUCCESS
+**Details:** blocks/pq-policy-category.liquid passed all checks.
+
+### File 5
+**Artifact ID:** panquire-pages-20260917
+**Revision:** 1
+*Use same ID & increment revision when retrying on an improvement of this artifact*
+
+**Status:** ✅ SUCCESS
+**Details:** blocks/pq-policy-question.liquid passed all checks.
+
+### File 6
+**Artifact ID:** panquire-pages-20260917
+**Revision:** 1
+*Use same ID & increment revision when retrying on an improvement of this artifact*
+
+**Status:** ✅ SUCCESS
+**Details:** templates/page.terms.json passed all checks.
+
+### File 7
+**Artifact ID:** panquire-pages-20260917
+**Revision:** 1
+*Use same ID & increment revision when retrying on an improvement of this artifact*
+
+**Status:** ✅ SUCCESS
+**Details:** sections/pq-footer.liquid passed all checks.
+
+### File 8
+**Artifact ID:** panquire-pages-20260917
+**Revision:** 1
+*Use same ID & increment revision when retrying on an improvement of this artifact*
+
+**Status:** ✅ SUCCESS
+**Details:** snippets/pq-footer-links.liquid passed all checks.
+
+

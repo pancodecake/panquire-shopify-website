@@ -1,0 +1,14 @@
+<div class="pq pq-purchase-highlights" {{ block.shopify_attributes }}>
+  {% if block.settings.heading != blank %}<h2>{{ block.settings.heading | escape }}</h2>{% endif %}
+  <dl>{% assign rows = block.settings.rows | newline_to_br | split: '<br />' %}{% for row in rows %}{% assign pair = row | split: '|' %}{% if pair.size > 1 %}<div><dt>{{ pair[0] | strip | escape }}</dt><dd>{{ pair[1] | strip | escape }}</dd></div>{% endif %}{% endfor %}</dl>
+</div>
+{% schema %}
+{
+  "name":"Panquire key specs","tag":null,
+  "settings":[
+    {"type":"text","id":"heading","label":"Heading","default":"At a glance"},
+    {"type":"textarea","id":"rows","label":"Specifications","info":"One per line: Label | Value","default":"Motor | Coming soon\nBattery | Coming soon\nRange | Coming soon\nTop speed | Coming soon\nSuspension | Coming soon\nBrakes | Coming soon"}
+  ],
+  "presets":[{"name":"Panquire key specs"}]
+}
+{% endschema %}
