@@ -29,26 +29,22 @@
       {
         "type": "url",
         "id": "pq_products_url",
-        "label": "Products page",
-        "default": "/pages/products"
+        "label": "Products page"
       },
       {
         "type": "url",
         "id": "pq_about_url",
-        "label": "About Us page",
-        "default": "/pages/about"
+        "label": "About Us page"
       },
       {
         "type": "url",
         "id": "pq_partners_url",
-        "label": "Partner With Us page",
-        "default": "/pages/partners"
+        "label": "Partner With Us page"
       },
       {
         "type": "url",
         "id": "pq_terms_url",
-        "label": "Terms of Service page",
-        "default": "/pages/terms"
+        "label": "Terms of Service page"
       },
       {
         "type": "color_background",
